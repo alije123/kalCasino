@@ -14,7 +14,7 @@ public class User
 
     private async Task Exists()
     {
-        bool exists = await Db.GetValueBool(@$"SELECT EXISTS (SELECT balance FROM userbalances WHERE id = {UserId})");
+        var exists = await Db.GetValueBool(@$"SELECT EXISTS (SELECT balance FROM userbalances WHERE id = {UserId})");
         if (!exists)
         {
             await Db.Do($@"INSERT INTO polniykal.userbalances(id) VALUES({UserId})");
