@@ -7,6 +7,7 @@ public class User
     public User(InteractionContext ctx, ulong? userId = null)
     {
         UserId = userId ?? ctx.User.Id;
+        GetBalance();
     }
 
     private ulong UserId { get; }
@@ -21,7 +22,7 @@ public class User
         }
     }
 
-    public async Task GetBalance()
+    private async Task GetBalance()
     {
         await Exists();
         Balance = await Db.GetValueLong(@$"SELECT balance FROM userbalances WHERE id = {UserId}");

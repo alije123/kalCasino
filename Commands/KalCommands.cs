@@ -56,7 +56,6 @@ public class KalCommands : ApplicationCommandModule
         else
         {
             var kaloed = new User(ctx ,user?.Id);
-            await kaloed.GetBalance();
             long balance = kaloed.Balance;
         
             Rat rat = new Rat(balance);
@@ -210,7 +209,6 @@ public class KalCommands : ApplicationCommandModule
         else
         {
             var kaloed = new User(ctx, user.Id);
-            await kaloed.GetBalance();
 
             var admin = new User(ctx, ctx.User.Id);
             
@@ -308,7 +306,6 @@ public class KalCommands : ApplicationCommandModule
         else
         {
             var kaloed = new User(ctx, user.Id);
-            await kaloed.GetBalance();
 
             var bot = new User(ctx, ctx.Client.CurrentUser.Id);
             
@@ -335,8 +332,8 @@ public class KalCommands : ApplicationCommandModule
                 await kaloed.EditBalance(returnValue, User.Operation.Subtract);
                 await bot.EditBalance(returnValue, User.Operation.Add);
                 
-                Rat takeRat = new Rat(returnValue);
-                Rat resultRat = new Rat(kaloed.Balance);
+                var takeRat = new Rat(returnValue);
+                var resultRat = new Rat(kaloed.Balance);
 
                 sendingEmbed = new DiscordEmbedBuilder
                 {
