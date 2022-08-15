@@ -55,7 +55,7 @@ public class KalCommands : ApplicationCommandModule
         }
         else
         {
-            var kaloed = new User(ctx ,user?.Id);
+            var kaloed = new UserLegacy(ctx ,user?.Id);
             long balance = kaloed.Balance;
         
             Rat rat = new Rat(balance);
@@ -130,11 +130,11 @@ public class KalCommands : ApplicationCommandModule
         }
         else
         {
-            var kaloed = new User(ctx, user?.Id);
-            await kaloed.EditBalance(giveValue, User.Operation.Add);
+            var kaloed = new UserLegacy(ctx, user?.Id);
+            await kaloed.EditBalance(giveValue, UserLegacy.Operation.Add);
 
-            var bot = new User(ctx, ctx.Client.CurrentUser.Id);
-            await bot.EditBalance(giveValue, User.Operation.Subtract);
+            var bot = new UserLegacy(ctx, ctx.Client.CurrentUser.Id);
+            await bot.EditBalance(giveValue, UserLegacy.Operation.Subtract);
 
             long balance = kaloed.Balance;
             Rat rat = new Rat(balance);
@@ -208,9 +208,9 @@ public class KalCommands : ApplicationCommandModule
         }
         else
         {
-            var kaloed = new User(ctx, user.Id);
+            var kaloed = new UserLegacy(ctx, user.Id);
 
-            var admin = new User(ctx, ctx.User.Id);
+            var admin = new UserLegacy(ctx, ctx.User.Id);
             
             if (kaloed.Balance < takeValue)
             {
@@ -232,8 +232,8 @@ public class KalCommands : ApplicationCommandModule
             }
             else
             {
-                await kaloed.EditBalance(takeValue, User.Operation.Subtract);
-                await admin.EditBalance(takeValue, User.Operation.Add);
+                await kaloed.EditBalance(takeValue, UserLegacy.Operation.Subtract);
+                await admin.EditBalance(takeValue, UserLegacy.Operation.Add);
 
                 Rat takeRat = new Rat(takeValue);
                 Rat resultRat = new Rat(kaloed.Balance);
@@ -305,9 +305,9 @@ public class KalCommands : ApplicationCommandModule
         }
         else
         {
-            var kaloed = new User(ctx, user.Id);
+            var kaloed = new UserLegacy(ctx, user.Id);
 
-            var bot = new User(ctx, ctx.Client.CurrentUser.Id);
+            var bot = new UserLegacy(ctx, ctx.Client.CurrentUser.Id);
             
             if (kaloed.Balance < returnValue)
             {
@@ -329,8 +329,8 @@ public class KalCommands : ApplicationCommandModule
             }
             else
             {
-                await kaloed.EditBalance(returnValue, User.Operation.Subtract);
-                await bot.EditBalance(returnValue, User.Operation.Add);
+                await kaloed.EditBalance(returnValue, UserLegacy.Operation.Subtract);
+                await bot.EditBalance(returnValue, UserLegacy.Operation.Add);
                 
                 var takeRat = new Rat(returnValue);
                 var resultRat = new Rat(kaloed.Balance);

@@ -1,54 +1,46 @@
-﻿using DSharpPlus.SlashCommands;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace kalCasino.Database;
 
+[Index(nameof(DiscordId), IsUnique = true)]
 public class User
 {
-    public User(InteractionContext ctx, ulong? userId = null)
-    {
-        UserId = userId ?? ctx.User.Id;
-        GetBalance();
-    }
+    [Key]
+    public int Key { get; set; }
+    [Precision(10)]
+    public long DiscordId { get; set; }
+    public long Balance { get; set; }
+    public DateTime? LatestTimelyDate { get; set; } 
+    public long? LatestTimelyValue { get; set; }
+    public DateTime? TimelyEnd { get; set; } 
+    public DateTime? LatestSteal { get; set; }
+ 
+    public ICollection<Twink>? Twinks { get; set; } 
+    public ICollection<History>? Histories { get; set; } 
+    public ICollection<VoiceConfig>? VoiceConfigs { get; set; }
+}
 
-    private ulong UserId { get; }
-    public long Balance { get; private set; }
+public class Twink
+{
+    [Precision(10)]
+    public long DiscordId { get; set; }
+    
+    public User User { get; set; } = null!;
+}
 
-    private async Task Exists()
-    {
-        var exists = await Db.GetValueBool(@$"SELECT EXISTS (SELECT balance FROM userbalances WHERE id = {UserId})");
-        if (!exists)
-        {
-            await Db.Do($@"INSERT INTO polniykal.userbalances(id) VALUES({UserId})");
-        }
-    }
+public class History
+{
+    public DateTime ChangeDate { get; set; }
+    public long ValueChanged { get; set; } = 0;
+    public long? WhoChangedId { get; set; }
+    public string? Reason { get; set; }
+}
 
-    private async Task GetBalance()
-    {
-        await Exists();
-        Balance = await Db.GetValueLong(@$"SELECT balance FROM userbalances WHERE id = {UserId}");
-    }
+public class VoiceConfig
+{
+    public string ParameterName { get; set; } = null!;
+    public string Value { get; set; } = null!;
 
-    public async Task EditBalance(long editValue, Operation operation)
-    {
-        await Exists();
-        switch (operation)
-        {
-            case Operation.Add:
-                await Db.Do($@"UPDATE userbalances SET balance = balance + {editValue} WHERE id={UserId}");
-                break;
-            case Operation.Subtract:
-                await Db.Do($@"UPDATE userbalances SET balance = balance - {editValue} WHERE id={UserId}");
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(operation), operation, "Надо было указать Operation.Add, либо Subtract");
-        }
-        
-        GetBalance();
-    }
-
-    public enum Operation
-    {
-        Add,
-        Subtract
-    }
+    public User User { get; } = null!;
 }
