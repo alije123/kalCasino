@@ -1,4 +1,4 @@
-﻿namespace kalCasino.Commands;
+﻿namespace kalCasino;
 
 public class Rat
 {

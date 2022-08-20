@@ -14,7 +14,7 @@ public class Bot
     public DiscordClient? Client { get; private set; }
     public InteractivityExtension? Interactivity { get; private set; }
     public CommandsNextExtension? Commands { get; private set; }
-    public SlashCommandsExtension SlashCommands { get; private set; }
+    public SlashCommandsExtension SlashCommands { get; private set; } = null!;
 
     public async Task RunAsync()
     {
@@ -37,7 +37,10 @@ public class Bot
             Timeout = TimeSpan.FromMinutes(2)
         });
 
-        slash.RegisterCommands<KalCommands>(1001625197503332525);
+        slash.RegisterCommands<Admin>(1001625197503332525);
+        slash.RegisterCommands<Moderator>(1001625197503332525);
+        slash.RegisterCommands<Plain>(1001625197503332525);
+        slash.RegisterCommands<Other>(1001625197503332525);
 
         await Client.ConnectAsync();
 

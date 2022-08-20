@@ -1,36 +1,35 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using kalCasino.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace kalCasino.Database;
 
 public sealed class DataContext : DbContext
 {
-    public DbSet<User> Users { get; set; }
-    
-    public DbSet<Shop> Shop { get; set; }
-    public DbSet<LuckHour> LuckHour { get; set; }
-    
-    private readonly IConfiguration _configuration;
-
-    public DataContext(IConfiguration configuration)
+    public DataContext()
     {
-        _configuration = configuration;
+        Database.EnsureDeleted();
+        Database.EnsureCreated();
     }
     
+    public DbSet<User> Users { get; set; }
+
+    public DbSet<Shop> Shop { get; set; }
+    public DbSet<LuckHour> LuckHour { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Twink>().HasKey(u => new { u.User, u.DiscordId });
-        modelBuilder.Entity<History>()
-            .Property(h => h.ChangeDate)
-            .HasDefaultValueSql("NOW()");
-        // modelBuilder.Entity<User>().Property(b => b.DiscordId).HasColumnType("bigint(10)");
-        // modelBuilder.Entity<Twink>().Property(a => a.DiscordId).HasColumnType("bigint(10)");
+        modelBuilder.Entity<User>().HasData( new User { Key = 1, DiscordId = 1001624962538426398, Balance = 1000000 });
+        
+        modelBuilder.Entity<User>().Property(b => b.DiscordId).HasColumnType("bigint(10) unsigned");
+        modelBuilder.Entity<Twink>().Property(a => a.DiscordId).HasColumnType("bigint(10) unsigned");
+        modelBuilder.Entity<Shop>().Property(a => a.RoleId).HasColumnType("bigint(10) unsigned");
     }
 
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
-        // connect to mysql with connection string from app settings
-        var connectionString = _configuration.GetConnectionString("WebApiDatabase");
+        options.LogTo(Console.WriteLine);
+        
+        const string connectionString = "server=localhost; user=root; password=4AnAl1PEnetRator7; database=polniykal;";
         options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
     }
 }
