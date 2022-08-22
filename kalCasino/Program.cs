@@ -3,14 +3,13 @@ using Discord.Addons.Hosting;
 using Discord.Commands;
 using Discord.WebSocket;
 using kalCasino;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 var host = Host.CreateDefaultBuilder()   
     .ConfigureDiscordHost((context, config) =>
     {
         config.SocketConfig = new DiscordSocketConfig
         {
+            GatewayIntents = GatewayIntents.All | GatewayIntents.AllUnprivileged,
             LogLevel = LogSeverity.Verbose,
             AlwaysDownloadUsers = true,
             MessageCacheSize = 200

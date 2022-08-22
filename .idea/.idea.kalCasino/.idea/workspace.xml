@@ -11,44 +11,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0c6f9b1-614b-4fa8-85fa-3e2055d9a756" name="Changes" comment="no Program.cs????">
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Attributes/ChannelCheckMode.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Attributes/ReqireCategoriesAttribute.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/CommandHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Commands/Admin.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Commands/Moderator.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Commands/Other.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Commands/Plain.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Database/Context.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Database/DbUser.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/InteractionHandler.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Log.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Models/LuckHour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Models/Shop.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Models/User.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Program.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/Rat.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/kalCasinoWorker/bot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/dictionaries/alije123.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/efCoreCommonOptions.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino.dir/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/dbnavigator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/dictionaries/alije123.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/discord.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/kalCasino.sln" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kalCasino.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino.sln.DotSettings.user" afterDir="false" />
+    <list default="true" id="f0c6f9b1-614b-4fa8-85fa-3e2055d9a756" name="Changes" comment="kal">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/appsettings.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,6 +52,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd24584d19b30e71661e6cf1e2b72e725ac87c09096b9fcbf5f344bff357d/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/C#/kalCasino/Commands/Admin.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://E:/C#/kalCasino/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/Attributes/ReqireCategoriesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/CommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/Commands/Moderator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/Database/Context.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/Database/DbUser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/bot.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/kalCasino/obj/Debug/net6.0/.NETCoreApp,Version=v6.0.AssemblyAttributes.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -130,7 +102,7 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.kalCasino: Sample.Simple">
+  <component name="RunManager" selected=".NET Launch Settings Profile.kalCasinoWorker">
     <configuration name="discord.net" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -306,7 +278,7 @@
       <workItem from="1659491476790" duration="258000" />
       <workItem from="1661168278387" duration="4107000" />
       <workItem from="1661174685484" duration="13831000" />
-      <workItem from="1661191652182" duration="3446000" />
+      <workItem from="1661191652182" duration="6062000" />
     </task>
     <task id="LOCAL-00001" summary="added broken top balance">
       <created>1661168680296</created>
@@ -329,7 +301,21 @@
       <option name="project" value="LOCAL" />
       <updated>1661193949627</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="console project to worker">
+      <created>1661195501419</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1661195501419</updated>
+    </task>
+    <task id="LOCAL-00005" summary="kal">
+      <created>1661195707696</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661195707696</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -389,7 +375,9 @@
     <MESSAGE value="added broken top balance" />
     <MESSAGE value="start porting to discord.net" />
     <MESSAGE value="no Program.cs????" />
-    <option name="LAST_COMMIT_MESSAGE" value="no Program.cs????" />
+    <MESSAGE value="console project to worker" />
+    <MESSAGE value="kal" />
+    <option name="LAST_COMMIT_MESSAGE" value="kal" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
