@@ -77,53 +77,68 @@ public class Moderator : ApplicationCommandModule
         }
         else
         {
-            await using var db = new DataContext();
-            
-            var userFromDb = await new DbUser(db, commandUser.Id).GetUser();
-            var botFromDb = await new DbUser(db, ctx.Client.CurrentUser.Id).GetUser();
-
-            if (userFromDb.Balance < returnValue)
-            {
-                sendingEmbed = new DiscordEmbedBuilder
-                {
-                    Author = new DiscordEmbedBuilder.EmbedAuthor
-                    {
-                        Name = commandUser.Username,
-                        IconUrl = commandUser.AvatarUrl
-                    },
-                    Title = "Ошибка",
-                    Description = "На балансе недостаточно реткоинов",
-                    Color = new DiscordColor(ErrorColor),
-                    Footer = new DiscordEmbedBuilder.EmbedFooter
-                    {
-                        Text = "Попробуй забрать у других"
-                    }
-                };
-            }
-            else
-            {
-                userFromDb.Balance -= returnValue;
-                botFromDb.Balance += returnValue;
+            try
+            { 
+                await using var db = new DataContext();
                 
-                var returnRat = new Rat(returnValue);
-                var resultRat = new Rat(userFromDb.Balance);
+                var userFromDb = await new DbUser(db, commandUser.Id, ctx).GetUser();
+                var botFromDb = await new DbUser(db, ctx.Client.CurrentUser.Id, ctx).GetUser();
 
+                if (userFromDb.Balance < returnValue)
+                {
+                    sendingEmbed = new DiscordEmbedBuilder
+                    {
+                        Author = new DiscordEmbedBuilder.EmbedAuthor
+                        {
+                            Name = commandUser.Username,
+                            IconUrl = commandUser.AvatarUrl
+                        },
+                        Title = "Ошибка",
+                        Description = "На балансе недостаточно реткоинов",
+                        Color = new DiscordColor(ErrorColor),
+                        Footer = new DiscordEmbedBuilder.EmbedFooter
+                        {
+                            Text = "Попробуй забрать у других"
+                        }
+                    };
+                }
+                else
+                {
+                    userFromDb.Balance -= returnValue;
+                    botFromDb.Balance += returnValue;
+                
+                    var returnRat = new Rat(returnValue);
+                    var resultRat = new Rat(userFromDb.Balance);
+
+                    sendingEmbed = new DiscordEmbedBuilder
+                    {
+                        Author = new DiscordEmbedBuilder.EmbedAuthor
+                        {
+                            Name = commandUser.Username,
+                            IconUrl = commandUser.AvatarUrl
+                        },
+                        Title = $"Партия забрать себе {returnValue} {returnRat.Word}",
+                        Description = $"Баланс теперь {userFromDb.Balance} {resultRat.Word}",
+                        Thumbnail = new DiscordEmbedBuilder.EmbedThumbnail
+                        {
+                            Url = @"https://cdn.discordapp.com/attachments/1002188468174196756/1003205839693283379/unknown.png"
+                        },
+                        Color = new DiscordColor(NeutralColor)
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                
                 sendingEmbed = new DiscordEmbedBuilder
                 {
-                    Author = new DiscordEmbedBuilder.EmbedAuthor
-                    {
-                        Name = commandUser.Username,
-                        IconUrl = commandUser.AvatarUrl
-                    },
-                    Title = $"Партия забрать себе {returnValue} {returnRat.Word}",
-                    Description = $"Баланс теперь {userFromDb.Balance} {resultRat.Word}",
-                    Thumbnail = new DiscordEmbedBuilder.EmbedThumbnail
-                    {
-                        Url = @"https://cdn.discordapp.com/attachments/1002188468174196756/1003205839693283379/unknown.png"
-                    },
-                    Color = new DiscordColor(NeutralColor)
+                    Title = "Произошла какая-то ебучая ошибка",
+                    Description = "Сообщи пж дауну, который криво написал этого бота",
+                    Color = new DiscordColor(ErrorColor)
                 };
             }
+           
         }
         
         await ctx.EditResponseAsync(new DiscordWebhookBuilder()

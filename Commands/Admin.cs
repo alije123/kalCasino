@@ -25,6 +25,7 @@ public class Admin : ApplicationCommandModule
         log.CommandСall(ctx);
 
         DiscordEmbedBuilder sendingEmbed;
+        DiscordEmbedBuilder errorEmbed;
 
         if (commandUser != null 
             && commandUser.IsBot 
@@ -64,38 +65,51 @@ public class Admin : ApplicationCommandModule
         else
         {
             var findUser = commandUser ?? ctx.User;
-            
-            await using var db = new DataContext();
-            
-            var userFromDb = await new DbUser(db, findUser.Id).GetUser();
-            var botFromDb = await db.Users.FirstAsync(p => p.DiscordId == ctx.Client.CurrentUser.Id);
 
-            userFromDb.Balance += giveValue;
-            botFromDb.Balance -= giveValue;
-            await db.SaveChangesAsync();
-            
-            var balance = userFromDb.Balance;
-            
-            var rat = new Rat(balance);
-            var kal = new Rat(giveValue);
-            
-            sendingEmbed = new DiscordEmbedBuilder
+            try
             {
-                Author = new DiscordEmbedBuilder.EmbedAuthor
+                await using var db = new DataContext();
+
+                var userFromDb = await new DbUser(db, findUser.Id, ctx).GetUser();
+                var botFromDb = await db.Users.FirstAsync(p => p.DiscordId == ctx.Client.CurrentUser.Id);
+
+                userFromDb.Balance += giveValue;
+                botFromDb.Balance -= giveValue;
+                await db.SaveChangesAsync();
+
+                var balance = userFromDb.Balance;
+
+                var rat = new Rat(balance);
+                var kal = new Rat(giveValue);
+
+                sendingEmbed = new DiscordEmbedBuilder
                 {
-                    IconUrl = commandUser?.AvatarUrl ?? ctx.User.AvatarUrl,
-                    Name = commandUser?.Username ?? ctx.User.Username
-                },
-                Title = $"Поступить зачисление в размере {giveValue} {kal.Word}",
-                Description = $"Баланс теперь {balance} {rat.Word}",
-                Color = new DiscordColor(NeutralColor),
-                Thumbnail = new DiscordEmbedBuilder.EmbedThumbnail
+                    Author = new DiscordEmbedBuilder.EmbedAuthor
+                    {
+                        IconUrl = commandUser?.AvatarUrl ?? ctx.User.AvatarUrl,
+                        Name = commandUser?.Username ?? ctx.User.Username
+                    },
+                    Title = $"Поступить зачисление в размере {giveValue} {kal.Word}",
+                    Description = $"Баланс теперь {balance} {rat.Word}",
+                    Color = new DiscordColor(NeutralColor),
+                    Thumbnail = new DiscordEmbedBuilder.EmbedThumbnail
+                    {
+                        Url =
+                            @"https://cdn.discordapp.com/attachments/1002188468174196756/1002592396434997308/unknown.png"
+                    }
+                };
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                sendingEmbed = new DiscordEmbedBuilder
                 {
-                    Url = @"https://cdn.discordapp.com/attachments/1002188468174196756/1002592396434997308/unknown.png"
-                }
-            };
+                    Title = "Произошла какая-то ебучая ошибка",
+                    Description = "Сообщи пж дауну, который криво написал этого бота",
+                    Color = new DiscordColor(ErrorColor)
+                };
+            }
         }
-        
         await ctx.EditResponseAsync(new DiscordWebhookBuilder()
             .AddEmbed(sendingEmbed));
     }
@@ -165,56 +179,72 @@ public class Admin : ApplicationCommandModule
         }
         else
         {
-            await using var db = new DataContext();
-
-            var userFromDb = await new DbUser(db, commandUser.Id).GetUser();
-
-            var adminFromDb = await new DbUser(db, ctx.User.Id).GetUser();
-
-            if (userFromDb.Balance < takeValue)
+            try
             {
-                sendingEmbed = new DiscordEmbedBuilder
+                await using var db = new DataContext();
+
+                var userFromDb = await new DbUser(db, commandUser.Id, ctx).GetUser();
+
+                var adminFromDb = await new DbUser(db, ctx.User.Id, ctx).GetUser();
+
+                if (userFromDb.Balance < takeValue)
                 {
-                    Author = new DiscordEmbedBuilder.EmbedAuthor
+                    sendingEmbed = new DiscordEmbedBuilder
                     {
-                        Name = commandUser.Username,
-                        IconUrl = commandUser.AvatarUrl
-                    },
-                    Title = "Ошибка",
-                    Description = "На балансе недостаточно реткоинов",
-                    Color = new DiscordColor(ErrorColor),
-                    Footer = new DiscordEmbedBuilder.EmbedFooter
-                    {
-                        Text = "Попробуй забрать у других"
-                    }
-                };
-            }
-            else
-            {
-                userFromDb.Balance -= takeValue;
-                adminFromDb.Balance += takeValue;
+                        Author = new DiscordEmbedBuilder.EmbedAuthor
+                        {
+                            Name = commandUser.Username,
+                            IconUrl = commandUser.AvatarUrl
+                        },
+                        Title = "Ошибка",
+                        Description = "На балансе недостаточно реткоинов",
+                        Color = new DiscordColor(ErrorColor),
+                        Footer = new DiscordEmbedBuilder.EmbedFooter
+                        {
+                            Text = "Попробуй забрать у других"
+                        }
+                    };
+                }
+                else
+                {
+                    userFromDb.Balance -= takeValue;
+                    adminFromDb.Balance += takeValue;
 
-                await db.SaveChangesAsync();
+                    await db.SaveChangesAsync();
+
+                    var takeRat = new Rat(takeValue);
+                    var resultRat = new Rat(userFromDb.Balance);
+
+                    sendingEmbed = new DiscordEmbedBuilder
+                    {
+                        Author = new DiscordEmbedBuilder.EmbedAuthor
+                        {
+                            Name = commandUser.Username,
+                            IconUrl = commandUser.AvatarUrl
+                        },
+                        Title = $"{ctx.User.Username} забрать себе {takeValue} {takeRat.Word}",
+                        Description = $"Баланс теперь {userFromDb.Balance} {resultRat.Word}",
+                        Thumbnail = new DiscordEmbedBuilder.EmbedThumbnail
+                        {
+                            Url =
+                                @"https://cdn.discordapp.com/attachments/1002188468174196756/1003133521918951476/unknown.png"
+                        },
+                        Color = new DiscordColor(NeutralColor)
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
                 
-                var takeRat = new Rat(takeValue);
-                var resultRat = new Rat(userFromDb.Balance);
-
                 sendingEmbed = new DiscordEmbedBuilder
                 {
-                    Author = new DiscordEmbedBuilder.EmbedAuthor
-                    {
-                        Name = commandUser.Username,
-                        IconUrl = commandUser.AvatarUrl
-                    },
-                    Title = $"{ctx.User.Username} забрать себе {takeValue} {takeRat.Word}",
-                    Description = $"Баланс теперь {userFromDb.Balance} {resultRat.Word}",
-                    Thumbnail = new DiscordEmbedBuilder.EmbedThumbnail
-                    {
-                        Url = @"https://cdn.discordapp.com/attachments/1002188468174196756/1003133521918951476/unknown.png"
-                    },
-                    Color = new DiscordColor(NeutralColor)
+                    Title = "Произошла какая-то ебучая ошибка",
+                    Description = "Сообщи пж дауну, который криво написал этого бота",
+                    Color = new DiscordColor(ErrorColor)
                 };
             }
+            
         }
         await ctx.EditResponseAsync(new DiscordWebhookBuilder()
             .AddEmbed(sendingEmbed));

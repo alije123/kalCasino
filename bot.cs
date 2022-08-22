@@ -34,7 +34,7 @@ public class Bot
 
         Client.UseInteractivity(new InteractivityConfiguration
         {
-            Timeout = TimeSpan.FromMinutes(2)
+            Timeout = TimeSpan.FromSeconds(30)
         });
 
         slash.RegisterCommands<Admin>(1001625197503332525);

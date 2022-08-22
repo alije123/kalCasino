@@ -531,7 +531,7 @@
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "MySqlConnector/2.1.11": {
+      "MySqlConnector/2.1.2": {
         "type": "package",
         "compile": {
           "lib/net6.0/MySqlConnector.dll": {}
@@ -2812,10 +2812,10 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "MySqlConnector/2.1.11": {
-      "sha512": "JTWIkFDz0uQhXKLjd53t2zeZn84aGuxCzRRe5NYOInuThRa6OrtdN/iEob2+GYAJeH2f4m42wdmunjT5Y02lIA==",
+    "MySqlConnector/2.1.2": {
+      "sha512": "JVokQTUNN3WHAu9Vw8ieeq1dXTFokJiig5P0VJ4f439UxRrsPo6SaVWC8Zdm6mkPeQFhZ0/9afdWa02EY/1j/w==",
       "type": "package",
-      "path": "mysqlconnector/2.1.11",
+      "path": "mysqlconnector/2.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -2837,7 +2837,7 @@
         "lib/netstandard2.1/MySqlConnector.dll",
         "lib/netstandard2.1/MySqlConnector.xml",
         "logo.png",
-        "mysqlconnector.2.1.11.nupkg.sha512",
+        "mysqlconnector.2.1.2.nupkg.sha512",
         "mysqlconnector.nuspec"
       ]
     },
@@ -6670,7 +6670,6 @@
       "Microsoft.EntityFrameworkCore.Design >= 6.0.8",
       "Microsoft.Extensions.Configuration.Json >= 6.0.0",
       "Microsoft.Extensions.Logging.Console >= 6.0.0",
-      "MySqlConnector >= 2.1.11",
       "Pomelo.EntityFrameworkCore.MySql >= 6.0.2",
       "Pomelo.EntityFrameworkCore.MySql.Design >= 1.1.2"
     ]
@@ -6760,10 +6759,6 @@
           "Microsoft.Extensions.Logging.Console": {
             "target": "Package",
             "version": "[6.0.0, )"
-          },
-          "MySqlConnector": {
-            "target": "Package",
-            "version": "[2.1.11, )"
           },
           "Pomelo.EntityFrameworkCore.MySql": {
             "target": "Package",
