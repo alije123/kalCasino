@@ -1,4 +1,5 @@
-﻿using DSharpPlus;
+﻿using System.Diagnostics;
+using DSharpPlus;
 using DSharpPlus.Entities;
 using DSharpPlus.Interactivity;
 using DSharpPlus.Interactivity.Extensions;
@@ -174,4 +175,14 @@ public class Plain : ApplicationCommandModule
         }
     }
 
+
+    [SlashCommand("test", "kal")]
+    public async Task Test(InteractionContext ctx)
+    {
+        var sw = new Stopwatch();
+        sw.Start();
+        await ctx.Client.GetUserAsync(310911827997622272);
+        sw.Stop();
+        await ctx.CreateResponseAsync($"На получение юзера затрачено: {sw.ElapsedMilliseconds / 1000f} секунд");
+    }
 }
