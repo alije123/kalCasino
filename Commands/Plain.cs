@@ -101,6 +101,10 @@ public class Plain : ApplicationCommandModule
         
         try
         {
+            var sw = new Stopwatch();
+            
+            sw.Start();
+            
             var db = new DataContext();
         
             var topUsers = await db.Users
@@ -157,6 +161,9 @@ public class Plain : ApplicationCommandModule
                 page.Content = "fck you";
                 pages.Add(page);
             }
+            
+            sw.Stop();
+            Console.WriteLine($"На выполнение команды ушло {sw.Elapsed}");
 
             await ctx.Interaction.SendPaginatedResponseAsync(pages: pages, asEditResponse: true, ephemeral: false,
                 user: ctx.User);
