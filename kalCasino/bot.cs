@@ -1,4 +1,4 @@
-﻿using DSharpPlus;
+﻿/*using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.EventArgs;
 using DSharpPlus.Interactivity;
@@ -51,4 +51,4 @@ public class Bot
     {
         return Task.CompletedTask;
     }
-}
+}*/

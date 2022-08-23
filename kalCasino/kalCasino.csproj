@@ -16,6 +16,7 @@
         <PackageReference Include="DSharpPlus.CommandsNext" Version="4.2.0" />
         <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0" />
         <PackageReference Include="DSharpPlus.SlashCommands" Version="4.2.0" />
+        <PackageReference Include="Fergun.Interactive" Version="1.6.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.8" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="6.0.8" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Relational.Design" Version="1.1.6" />

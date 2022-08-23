@@ -193,6 +193,18 @@
           "lib/netcoreapp2.1/Emzi0767.Common.dll": {}
         }
       },
+      "Fergun.Interactive/1.6.0": {
+        "type": "package",
+        "dependencies": {
+          "Discord.Net.WebSocket": "3.7.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/Fergun.Interactive.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/Fergun.Interactive.dll": {}
+        }
+      },
       "Microsoft.EntityFrameworkCore/6.0.8": {
         "type": "package",
         "dependencies": {
@@ -2552,6 +2564,21 @@
         "lib/netcoreapp2.1/Emzi0767.Common.xml",
         "lib/netstandard2.0/Emzi0767.Common.dll",
         "lib/netstandard2.0/Emzi0767.Common.xml"
+      ]
+    },
+    "Fergun.Interactive/1.6.0": {
+      "sha512": "GHAVxfm+383vnyE43n26gq6EyYaLeCMmUfTcARUhWwbTCooBCLgtgBazpZssdpJUmQxAFkFFf4na1vfXeZ4PAg==",
+      "type": "package",
+      "path": "fergun.interactive/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fergun.interactive.1.6.0.nupkg.sha512",
+        "fergun.interactive.nuspec",
+        "lib/netstandard2.0/Fergun.Interactive.dll",
+        "lib/netstandard2.0/Fergun.Interactive.xml",
+        "lib/netstandard2.1/Fergun.Interactive.dll",
+        "lib/netstandard2.1/Fergun.Interactive.xml"
       ]
     },
     "Microsoft.EntityFrameworkCore/6.0.8": {
@@ -7260,6 +7287,7 @@
       "Discord.Net.Core >= 3.7.2",
       "Discord.Net.Rest >= 3.7.2",
       "Discord.Net.WebSocket >= 3.7.2",
+      "Fergun.Interactive >= 1.6.0",
       "Microsoft.EntityFrameworkCore >= 6.0.8",
       "Microsoft.EntityFrameworkCore.Analyzers >= 6.0.8",
       "Microsoft.EntityFrameworkCore.Relational.Design >= 1.1.6",
@@ -7343,6 +7371,10 @@
           "Discord.Net.WebSocket": {
             "target": "Package",
             "version": "[3.7.2, )"
+          },
+          "Fergun.Interactive": {
+            "target": "Package",
+            "version": "[1.6.0, )"
           },
           "Microsoft.EntityFrameworkCore": {
             "target": "Package",

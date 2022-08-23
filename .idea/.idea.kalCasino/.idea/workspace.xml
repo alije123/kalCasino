@@ -11,9 +11,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0c6f9b1-614b-4fa8-85fa-3e2055d9a756" name="Changes" comment="kal">
+    <list default="true" id="f0c6f9b1-614b-4fa8-85fa-3e2055d9a756" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.kalCasino/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/Commands/Plain.cs" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/Commands/Plain.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/kalCasino/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/bot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/bot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/kalCasino.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/kalCasino.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/Debug/net6.0/kalCasino.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/Debug/net6.0/kalCasino.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/Debug/net6.0/kalCasino.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/Debug/net6.0/kalCasino.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/kalCasino.csproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/kalCasino.csproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kalCasino/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/kalCasino/obj/rider.project.restore.info" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +53,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a1caa3ea90864cc6a48e1d2d72ba8ba91ee00/d7/ab175693/InteractivityResult`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/ec5b492a3dd1472e96526b75a644f0d5a2a00/b2/accadd0c/EventExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1af51483c9bf18871cce649b9f966dd7be686536f998c33bba3c5fc4adea4a0/Task.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/1f752884286b6339cb3e8ade38c5b9c5f79f4ad173bae090944b89357bb36a/TimeSpan.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/2e459be164a87e8ad29b291043284b1cf13b3f7fad65d670b6262171d1e53a45/LoggerT.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/53f9dfcdbc601f275fc07c274ee53474126a931e1efbebe98518e79789dfeba/Logger.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/575c31ecc35a636b6f962cb71d53992552941a18982aae1c8e6c16305cc3761b/ExceptionDispatchInfo.cs" root0="SKIP_HIGHLIGHTING" />
@@ -50,8 +62,6 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a0395df3b67578cf7cffe06d693be67dd21534e8929b8f42888814859687aff3/Host.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/aacf6151870041ec50684429cbd3c1582d8b1ada7b65a7a9482fec6e935a55/CancellationTokenSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/fd24584d19b30e71661e6cf1e2b72e725ac87c09096b9fcbf5f344bff357d/DefaultInterpolatedStringHandler.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/C#/kalCasino/Commands/Admin.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://E:/C#/kalCasino/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kalCasino/Attributes/ReqireCategoriesAttribute.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kalCasino/CommandHandler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/kalCasino/Commands/Moderator.cs" root0="FORCE_HIGHLIGHTING" />
@@ -72,29 +82,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "E:/C#/kalCasino/kalCasino.sln",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "sql.rename.search.for.storage.occurrences": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/C#/kalCasino/kalCasino.sln&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;sql.rename.search.for.storage.occurrences&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;,
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
@@ -278,7 +289,9 @@
       <workItem from="1659491476790" duration="258000" />
       <workItem from="1661168278387" duration="4107000" />
       <workItem from="1661174685484" duration="13831000" />
-      <workItem from="1661191652182" duration="6062000" />
+      <workItem from="1661191652182" duration="7310000" />
+      <workItem from="1661203231035" duration="8913000" />
+      <workItem from="1661269991326" duration="758000" />
     </task>
     <task id="LOCAL-00001" summary="added broken top balance">
       <created>1661168680296</created>
@@ -315,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661195707696</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix startup">
+      <created>1661202184741</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1661202184741</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,7 +397,8 @@
     <MESSAGE value="no Program.cs????" />
     <MESSAGE value="console project to worker" />
     <MESSAGE value="kal" />
-    <option name="LAST_COMMIT_MESSAGE" value="kal" />
+    <MESSAGE value="fix startup" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix startup" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UwrCRjLGTMsdByfbeT110Apcm9anHky02wLnICR/PY5Bn7TY5uur0BCG4CkJqGJ9j2qteLKBgGSRQRTECxmUGw==",
+  "dgSpecHash": "Y68GsiKh8qzko894/xeVoUOjMIBRtZi3knw89nLwXkwCXqNGDLdljLpEglpOalY+P8U65Kn9iRjMsF9980eAkw==",
   "success": true,
   "projectFilePath": "E:\\C#\\kalCasino\\kalCasino\\kalCasino.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "C:\\Users\\alije123\\.nuget\\packages\\dsharpplus.interactivity\\4.2.0\\dsharpplus.interactivity.4.2.0.nupkg.sha512",
     "C:\\Users\\alije123\\.nuget\\packages\\dsharpplus.slashcommands\\4.2.0\\dsharpplus.slashcommands.4.2.0.nupkg.sha512",
     "C:\\Users\\alije123\\.nuget\\packages\\emzi0767.common\\2.6.2\\emzi0767.common.2.6.2.nupkg.sha512",
+    "C:\\Users\\alije123\\.nuget\\packages\\fergun.interactive\\1.6.0\\fergun.interactive.1.6.0.nupkg.sha512",
     "C:\\Users\\alije123\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.8\\microsoft.entityframeworkcore.6.0.8.nupkg.sha512",
     "C:\\Users\\alije123\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.8\\microsoft.entityframeworkcore.abstractions.6.0.8.nupkg.sha512",
     "C:\\Users\\alije123\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.8\\microsoft.entityframeworkcore.analyzers.6.0.8.nupkg.sha512",

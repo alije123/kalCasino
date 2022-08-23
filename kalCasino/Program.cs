@@ -2,6 +2,7 @@
 using Discord.Addons.Hosting;
 using Discord.Commands;
 using Discord.WebSocket;
+using Fergun.Interactive;
 using kalCasino;
 
 var host = Host.CreateDefaultBuilder()   
@@ -9,7 +10,6 @@ var host = Host.CreateDefaultBuilder()
     {
         config.SocketConfig = new DiscordSocketConfig
         {
-            GatewayIntents = GatewayIntents.All | GatewayIntents.AllUnprivileged,
             LogLevel = LogSeverity.Verbose,
             AlwaysDownloadUsers = true,
             MessageCacheSize = 200
@@ -34,6 +34,7 @@ var host = Host.CreateDefaultBuilder()
         //Add any other services here
         services.AddHostedService<CommandHandler>();
         services.AddHostedService<InteractionHandler>();
+        services.AddSingleton<InteractiveService>();
     }).Build();
   
 await host.RunAsync();

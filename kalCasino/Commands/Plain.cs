@@ -1,18 +1,21 @@
-﻿using DSharpPlus;
-using DSharpPlus.Entities;
-using DSharpPlus.Interactivity;
-using DSharpPlus.Interactivity.Extensions;
-using DSharpPlus.SlashCommands;
+﻿using System.Diagnostics;
+using Discord;
+using Discord.Commands;
+using Fergun.Interactive;
+using Fergun.Interactive.Pagination;
 using kalCasino.Database;
 using Microsoft.EntityFrameworkCore;
 
 namespace kalCasino.Commands;
 
-public class Plain : ApplicationCommandModule
+public class Plain : ModuleBase<SocketCommandContext>
 {
-    private const string ErrorColor = "F64444";
-    private const string NeutralColor = "AC60F9";
+    private const uint ErrorColor = 0xF64444;
+    private const uint NeutralColor = 0xAC60F9;
     
+    public InteractiveService Interactive { get; set; }
+
+    /*
     [SlashCommand("balance", "Сколько у тебя на балансе?")]
     public async Task Balance(InteractionContext ctx, 
         [Option("user", "Ты можешь выбрать другого человека")] DiscordUser? commandUser = null)
@@ -92,86 +95,127 @@ public class Plain : ApplicationCommandModule
         await ctx.EditResponseAsync(new DiscordWebhookBuilder()
             .AddEmbed(sendingEmbed));
     }
+    */
 
-    [SlashCommand("top", "Посмотреть топ юзеров по балансу")]
-    public async Task Top(InteractionContext ctx)
+    [Command("top")]
+    [Summary("Посмотреть топ юзеров по балансу")]
+    public async Task Top()
     {
-        await ctx.CreateResponseAsync(InteractionResponseType.DeferredChannelMessageWithSource);
-        
         try
         {
             var db = new DataContext();
+
+            var sw = new Stopwatch();
+            
+            sw.Start();
         
             var topUsers = await db.Users
                 .Where(gay => gay.Balance != 0 
-                                    && gay.DiscordId != ctx.Client.CurrentUser.Id)
+                                    && gay.DiscordId != Context.Client.CurrentUser.Id)
                 .OrderByDescending(o => o.Balance).ToListAsync();
+            
+            sw.Stop();
+
+            Console.WriteLine($"На хуёвый запрос с бд затрачено: {sw.ElapsedMilliseconds/1000f} секунд");
+            
+            sw.Restart();
             
             var topUsersCopy = topUsers.ToList();
             
+            sw.Stop();
+            Console.WriteLine($"На копирование листа затрачено: {sw.ElapsedMilliseconds/1000f} секунд");
+            
+            sw.Restart();
+
+            var kw = new Stopwatch();
             foreach (var user in topUsers)
             {
-                try
-                {
-                    if (await ctx.Client.GetUserAsync(user.DiscordId, true) == null) 
+                kw.Restart();
+                if (await Context.Client.GetUserAsync(user.DiscordId) == null) 
                         topUsersCopy.Remove(user);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                    topUsersCopy.Remove(user);
-                }
+                kw.Stop();
+                Console.WriteLine($"-- На получение юзера затрачено: {kw.ElapsedMilliseconds/1000f} секунд");
             }
             
-            var pages = new List<Page>();
+            sw.Stop();
+            
+            Console.WriteLine($"На проверку на null затрачено: {sw.ElapsedMilliseconds/1000f} секунд");
+
+            sw.Restart();
+
+            var pages = new List<PageBuilder>();
 
             for (var i = 0; i <= (topUsersCopy.Count / 8); i++)
             {
-                var page = new Page();
+                var page = new PageBuilder();
 
-                var pageEmbed = new DiscordEmbedBuilder
-                {
-                    Title = "Топ пользователей по балансу",
-                    Color = new DiscordColor(NeutralColor)
-                };
-                for (var j = 0; j < 8; j++)
+                page.Title = "Топ пользователей по балансу";
+                page.Color = new Color(NeutralColor);
+                    for (var j = 0; j < 8; j++)
                 {
                     var currentPosition = i * 8 + j;
                     try
                     {
                         var userFromDb = topUsersCopy[currentPosition];
-                        var userFromDiscord = await ctx.Client.GetUserAsync(userFromDb.DiscordId);
+                        var userFromDiscord = await Context.Client.GetUserAsync(userFromDb.DiscordId);
                         var balance = userFromDb.Balance;
                         var rat = new Rat(balance);
-                        pageEmbed.AddField($"{currentPosition + 1}. {userFromDiscord.Username}",
+                        page.AddField($"{currentPosition + 1}. {userFromDiscord.Username}",
                             $"{balance} {rat.Word}");
                     }
                     catch (Exception e)
                     {
-                        Console.WriteLine(e);
+                        Console.WriteLine("Юзеров больше нет");
                     }
                 }
-                
-                page.Embed = pageEmbed;
-                page.Content = "fck you";
+                    
                 pages.Add(page);
             }
+            
+            sw.Stop();
+            
+            Console.WriteLine($"На костыльный перебор юзеров и создание страниц затрачено: {sw.ElapsedMilliseconds/1000f} секунд");
+            
+            sw.Restart();
 
-            await ctx.Interaction.SendPaginatedResponseAsync(pages: pages, asEditResponse: true, ephemeral: false,
-                user: ctx.User);
+            // await ctx.Interaction.SendPaginatedResponseAsync(pages: pages, asEditResponse: true, ephemeral: false,
+            //     user: ctx.User);
+            var paginator = new StaticPaginatorBuilder()
+                .WithPages(pages)
+                .Build();
+            
+            sw.Stop();
+            
+            Console.WriteLine($"На билд страниц затрачено: {sw.ElapsedMilliseconds/1000f} секунд");
+
+            await Interactive.SendPaginatorAsync(paginator, Context.Channel, TimeSpan.FromMinutes(10));
         }
         catch (Exception e)
         {
             Console.WriteLine(e);
 
-            var errorEmbed = new DiscordEmbedBuilder
+            var errorEmbed = new EmbedBuilder
             {
                 Title = "Произошла какая-то ебучая ошибка",
                 Description = "Сообщи пж дауну, который криво написал этого бота",
-                Color = new DiscordColor(ErrorColor)
-            };
-            await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(errorEmbed));
+                Color = new Color(ErrorColor)
+            }.Build();
+            // await ctx.EditResponseAsync(new DiscordWebhookBuilder().AddEmbed(errorEmbed));
+            await ReplyAsync(embed:errorEmbed);
         }
+    }
+
+    [Command("test")]
+    public async Task Test()
+    {
+        var sw = new Stopwatch();
+        sw.Start();
+
+        await Context.Client.GetUserAsync(584140343558275109);
+        
+        sw.Stop();
+
+        await ReplyAsync(message:$"На получение юзера вне контекста затрачено {sw.ElapsedMilliseconds/1000f}");
     }
 
 }
