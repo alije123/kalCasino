@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>dotnet-kalCasinoWorker-732B83A3-CEFE-4F8A-ADAC-7F4EB9CAEB3B</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="6.0.0" />
+        <PackageReference Include="Nefarius.DSharpPlus.CommandsNext.Extensions.Hosting" Version="2.1.292" />
+        <PackageReference Include="Nefarius.DSharpPlus.Extensions.Hosting" Version="2.1.292" />
+        <PackageReference Include="Nefarius.DSharpPlus.Interactivity.Extensions.Hosting" Version="2.1.292" />
+        <PackageReference Include="Nefarius.DSharpPlus.SlashCommands.Extensions.Hosting" Version="2.1.292" />
+        <PackageReference Include="Nefarius.DSharpPlus.VoiceNext.Extensions.Hosting" Version="2.1.292" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+        <PackageReference Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+    </ItemGroup>
+</Project>

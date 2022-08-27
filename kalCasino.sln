@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kalCasino", "kalCasino.csproj", "{4A88ACB4-A2FC-4BCB-8D63-047B4A7A726F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kalCasino", "kalCasino\kalCasino.csproj", "{34674F2E-0CE9-4CFC-9FD8-43D88B5E683A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +8,9 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4A88ACB4-A2FC-4BCB-8D63-047B4A7A726F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4A88ACB4-A2FC-4BCB-8D63-047B4A7A726F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4A88ACB4-A2FC-4BCB-8D63-047B4A7A726F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4A88ACB4-A2FC-4BCB-8D63-047B4A7A726F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34674F2E-0CE9-4CFC-9FD8-43D88B5E683A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34674F2E-0CE9-4CFC-9FD8-43D88B5E683A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34674F2E-0CE9-4CFC-9FD8-43D88B5E683A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34674F2E-0CE9-4CFC-9FD8-43D88B5E683A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
